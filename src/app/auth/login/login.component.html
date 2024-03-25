@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="login-form p-5">
+    <form [formGroup]="loginForm!" (ngSubmit)="login()">
+      <h1 class="text-center">Login</h1>
+      <div class="form-group">
+        <label for="email" class="form-label mb-2">E-mail</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter your email address"
+          formControlName="email"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !loginForm?.get('email')?.valid && loginForm?.get('email')?.touched
+          "
+        >
+          <span
+            class="help-block text-danger mt-2"
+            *ngIf="(loginForm?.get('email')?.errors)!['required']"
+            >E-mail is required</span
+          >
+          <span
+            class="help-block text-danger mt-2"
+            *ngIf="(loginForm?.get('email')?.errors)!['email']"
+            >E-mail is invalid</span
+          >
+        </span>
+      </div>
+      <div class="form-group mt-3">
+        <label for="password" class="form-label mb-2">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Enter password"
+          formControlName="password"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !loginForm?.get('password')?.valid &&
+            loginForm?.get('password')?.touched
+          "
+        >
+          <span
+            class="help-block text-danger mt-2"
+            *ngIf="(loginForm?.get('password')?.errors)!['required']"
+            >Password is required</span
+          >
+        </span>
+      </div>
+      <button
+        type="submit"
+        class="btn-submit mt-3 w-100"
+        [disabled]="loginForm?.invalid"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>

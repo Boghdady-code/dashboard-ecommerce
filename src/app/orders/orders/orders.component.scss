@@ -1,0 +1,63 @@
+.orders {
+  padding: 80px 20px;
+
+  .all-orders {
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  .btn-paid {
+    width: fit-content;
+    border: 1px solid #442c2e;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    &:hover {
+      background-color: #442c2e;
+      color: #fff;
+    }
+  }
+  .btn-delivered {
+    width: fit-content;
+    border: 1px solid #442c2e;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    &:hover {
+      background-color: #442c2e;
+      color: #fff;
+    }
+  }
+}
+
+.tbl-fixed {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+@media (max-width: 767px) {
+  .orders {
+    padding: 80px 0;
+    max-width: 300px;
+  }
+
+  .pagination {
+    max-width: 300px;
+  }
+
+  .change-status {
+    max-width: 300px;
+  }
+}

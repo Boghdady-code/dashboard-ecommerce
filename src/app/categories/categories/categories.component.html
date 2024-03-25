@@ -1,0 +1,51 @@
+<div class="categories">
+  <h1 class="text-center">Categories</h1>
+  <div class="categories-card row gap-2 justify-content-center">
+    <div class="cat-card col-md-3 mt-5" *ngFor="let category of categories">
+      <img [src]="category?.image" alt="" />
+      <h3 class="text-center mt-3">{{ category?.name }}</h3>
+      <p class="text-center">Category Id : {{ category?._id }}</p>
+      <div class="card-controls d-flex justify-content-between">
+        <i class="fas fa-edit" (click)="editCategory(category._id)"></i>
+        <i class="fas fa-trash" (click)="deleteCategory(category._id)"></i>
+      </div>
+    </div>
+  </div>
+  <div class="categories-creation">
+    <form [formGroup]="categoryForm!" (ngSubmit)="createCategory()">
+      <div class="form-group">
+        <label for="name" class="form-label">Category Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter category name"
+          formControlName="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="image" class="form-label">Category Image</label>
+        <img
+          src="{{ categoryForm?.get('image')?.value }}"
+          alt=""
+          class="img-fluid"
+        />
+        <input
+          type="file"
+          class="form-control mt-3"
+          id="image"
+          placeholder="Enter category image"
+          (change)="onFileSelected($event)"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn-submit"
+        [disabled]="categoryForm?.invalid"
+      >
+        {{ mode === "create" ? "Create" : "Update" }}
+      </button>
+    </form>
+  </div>
+</div>

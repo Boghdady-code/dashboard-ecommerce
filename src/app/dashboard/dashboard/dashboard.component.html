@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="dashboard">
+    <div class="mt-5 main-dashboard d-flex gap-2 justify-content-center">
+      <div class="welcome-card">
+        <h3>Dashboard</h3>
+        <p>Welcome Back, {{ loggedUser }}</p>
+      </div>
+
+      <div class="stats-card">
+        <h3>Statistics</h3>
+        <p>Total Orders: {{ orders?.length || 0 }}</p>
+        <p>Total Products: {{ products?.length || 0 }}</p>
+        <p>Total Categories: {{ categories?.length || 0 }}</p>
+        <p>Total Brands: {{ brands?.length || 0 }}</p>
+        <p>Total Users: {{ users?.length || 0 }}</p>
+      </div>
+    </div>
+    <div class="row mt-5 gap-2 justify-content-center dashboard-cards">
+      <div class="mt-2 col-md-5">
+        <div class="latest-products-card">
+          <h3 class="text-center mb-5">Latest Products</h3>
+          <div class="row">
+            <div class="image col-md-4" *ngFor="let product of latestProducts">
+              <img
+                src="{{ product?.imageCover }}"
+                alt=""
+                class="card-img-top img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2 col-md-5">
+        <div class="latest-orders-card">
+          <h3 class="text-center mb-5">Latest Orders</h3>
+          <div class="tbl-fixed">
+            <table class="table table-hover">
+              <tr>
+                <th class="text-center">Order Id</th>
+                <th class="text-center">Order Id</th>
+                <th class="text-center">Total Price</th>
+                <th class="text-center">Is Paid</th>
+                <th class="text-center">Is Delivered</th>
+              </tr>
+              <tr *ngFor="let order of orders; let i = index">
+                <td class="text-center">{{ i + 1 }}</td>
+                <td class="text-center">{{ order?._id }}</td>
+                <td class="text-center">{{ order?.totalOrderPrice }}</td>
+                <td class="text-center">{{ order?.isPaid }}</td>
+                <td class="text-center">{{ order?.isDelivered }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

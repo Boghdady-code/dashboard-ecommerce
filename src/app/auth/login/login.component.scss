@@ -1,0 +1,39 @@
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f6f5f5;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.login-form {
+  border: 1px solid #442c2e;
+  border-radius: 5px;
+  padding: 30px;
+  box-shadow: 0 0 5px 0 rgba(206, 192, 192, 0.2);
+  width: 500px;
+  height: fit-content;
+}
+.btn-submit {
+  background-color: #fff;
+
+  border: 1px solid #442c2e;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #442c2e;
+    color: #fff;
+  }
+}
+
+@media (max-width: 767px) {
+  .login-form {
+    width: 100%;
+  }
+}

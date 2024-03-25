@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <div class="orders">
+    <div class="all-orders">
+      <h1>All Orders</h1>
+      <div class="tbl-fixed">
+        <table class="table table-hover">
+          <thead>
+            <tr class="text-center">
+              <th scope="col">No.</th>
+              <th scope="col">Created At</th>
+              <th scope="col">Name</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Order Id</th>
+              <th scope="col">Total Order Price</th>
+              <th scope="col">Is Delivered</th>
+              <th scope="col">Delivered At</th>
+              <th scope="col">Is Paid</th>
+              <th scope="col">Paid At</th>
+              <th scope="col">Payment Method</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders; let i = index">
+              <td class="text-center">{{ i + 1 }}</td>
+              <td class="text-center">{{ order.createdAt }}</td>
+              <td class="text-center">
+                {{ order.user?.name || "deleted User" }}
+              </td>
+              <td class="text-center">
+                {{ order.user?.email || "deleted User" }}
+              </td>
+              <td class="text-center">{{ order._id }}</td>
+              <td class="text-center">{{ order.totalOrderPrice }}</td>
+              <td class="text-center">{{ order.isDelivered }}</td>
+              <td class="text-center">{{ order.deliveredAt }}</td>
+              <td class="text-center">{{ order.isPaid }}</td>
+              <td class="text-center">{{ order.paidAt }}</td>
+              <td class="text-center">{{ order.paymentMethod }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination mt-3">
+        <mat-paginator
+          [length]="totalDocs"
+          [pageSize]="10"
+          aria-label="Select page"
+          (page)="onPageChange($event)"
+          class="mt-3"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+    <div class="change-status mt-5">
+      <h1 class="text-center">Change Order Status</h1>
+
+      <label for="orderId" class="form-label mb-2" style="padding-left: 10px"
+        >Order Id</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="orderId"
+        placeholder="Enter order Id to change status"
+        #orderId
+      />
+      <div class="buttons mt-3">
+        <button class="btn-paid" (click)="payOrder(orderId.value)">Paid</button>
+        <button class="btn-delivered" (click)="deliveredOrder(orderId.value)">
+          Delivered
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

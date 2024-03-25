@@ -1,0 +1,47 @@
+<div class="brands">
+  <h1 class="text-center">Brands</h1>
+  <div class="brands-card row gap-2 justify-content-center">
+    <div class="brand-card col-md-3 mt-5" *ngFor="let brand of brands">
+      <img [src]="brand?.image" alt="" />
+      <h3 class="text-center mt-3">{{ brand?.name }}</h3>
+      <p class="text-center">Brand Id : {{ brand?._id }}</p>
+      <div class="card-controls d-flex justify-content-between">
+        <i class="fas fa-edit" (click)="editBrand(brand._id)"></i>
+        <i class="fas fa-trash" (click)="deleteBrand(brand._id)"></i>
+      </div>
+    </div>
+  </div>
+  <div class="brands-creation">
+    <form [formGroup]="brandsForm!" (ngSubmit)="createBrand()">
+      <div class="form-group">
+        <label for="name" class="form-label">Brand Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter brand name"
+          formControlName="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="image" class="form-label">Brand Image</label>
+        <img
+          src="{{ brandsForm?.get('image')?.value }}"
+          alt=""
+          class="img-fluid"
+        />
+        <input
+          type="file"
+          class="form-control mt-3"
+          id="image"
+          placeholder="Enter brand image"
+          (change)="onFileSelected($event)"
+        />
+      </div>
+      <button type="submit" class="btn-submit" [disabled]="brandsForm?.invalid">
+        {{ mode === "create" ? "Create" : "Update" }}
+      </button>
+    </form>
+  </div>
+</div>

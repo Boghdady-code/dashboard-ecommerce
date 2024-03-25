@@ -1,0 +1,34 @@
+<div class="side-bar">
+  <div class="logo" routerLink="/dashboard">
+    <p>E</p>
+  </div>
+  <ul class="links">
+    <li routerLink="/dashboard" routerLinkActive="active">
+      <i class="fa-solid fa-gauge"></i> <a>Dashboard</a>
+    </li>
+    <li routerLink="/products" routerLinkActive="active">
+      <i class="fa-solid fa-list-check"></i>
+      <a>Products</a>
+    </li>
+    <li routerLink="/categories" routerLinkActive="active">
+      <i class="fa-solid fa-shirt"></i><a>Categories</a>
+    </li>
+    <li routerLink="/brands" routerLinkActive="active">
+      <i class="fa-solid fa-users-between-lines"></i><a>Brands</a>
+    </li>
+    <li routerLink="/orders" routerLinkActive="active">
+      <i class="fa-solid fa-money-bill-wave"></i><a>Orders</a>
+    </li>
+    <li routerLink="/coupons" routerLinkActive="active">
+      <i class="fa-solid fa-ticket"></i><a>Coupons</a>
+    </li>
+    <li routerLink="/users"><i class="fa-solid fa-user"></i><a>Users</a></li>
+  </ul>
+  <div class="auth">
+    <a routerLink="/login" class="btn-login" *ngIf="!isAuthenticated">Login</a>
+
+    <a class="btn-login" *ngIf="isAuthenticated" (click)="onLogout()">
+      Logout</a
+    >
+  </div>
+</div>
